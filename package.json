@@ -1,0 +1,39 @@
+{
+  "name": "the_watch",
+  "version": "0.1.0",
+  "description": "Practise joins",
+  "main": "index.js",
+  "scripts": {
+    "knex": "knex",
+    "dev": "nodemon index",
+    "debug": "devtool index --watch",
+    "test": "tape 'tests/**/*.test.js' | tap-spec"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alice-tlr/the-watch"
+  },
+  "keywords": [
+    "knex",
+    "joins"
+  ],
+  "author": "Alice Rosier",
+  "bugs": {
+    "url": "https://github.com/alice-tlr/the-watch"
+  },
+  "homepage": "https://github.com/alice-tlr/the-watch",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "knex": "^0.11.10",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "devtool": "^2.3.0",
+    "nodemon": "^1.11.0",
+    "tap-diff": "^0.1.1",
+    "tape": "^4.6.3"
+  }
+}
