@@ -1,44 +1,35 @@
-var development = require('./knexfile').development
-var knex = require('knex')(development)
+var db = require('./db')
 
 module.exports = {
-  getHome: getHome,
-  getCharacteristics: getCharacteristics,
-  getWomble: getWomble
+  getIndex: getIndex,
+  getIndustry: getIndustry
 }
 
-function getHome (req, res) {
-  knex('wombles')
-  .select()
-  .then(function (wombles){
-    var vm = {
-      wombles: wombles
-    }
-    res.render('home', vm)
-  })
+
+function getIndex (req, res) {
+  var search = req.query.search || ''
+  db.getCompanies()
+    .where('name', 'like', '%' + search + '%')
+    .orWhere('address', 'like', '%' + search + '%')
+    .then(function (companies) {
+      var data = {
+        companies: companies
+      }
+      res.render('home', data)
+    })
 }
-
-function getCharacteristics (req, res) {
-  knex('wombles')
-  .join('characteristics', 'characteristics.id', '=', 'wombles.characteristic_id')
-  .select('characteristics.description', 'wombles.name')
-  .then(function (wombles){
-    var char = {
-      wombles:wombles,
-    }
-    res.render('characteristics', char)
+//this function is getting data from db about a particular industry and displays it
+function getIndustry (req, res) {
+  db.getIndustry(req.params.id)//asked the db for that particular industry with that id
+    .then(function (industry) {
+      return db.getCompanies()
+        .where('industry_id', industry.id)
+        .then(function (companies) {
+          industry.companies = companies
+          return industry
+        })
     })
-  }
-
-  function getWomble (req, res) {
-    var id = Number(req.params.id)
-    knex('wombles')
-    .join('characteristics', 'characteristics.id', '=', 'wombles.characteristic_id')
-    .select('wombles.name', 'characteristics.description')
-    .where('wombles.id', id)
-    .first()
-    .then(function(womble){
-      res.render('singlewomble', womble)
+    .then(function (industry) {
+      res.render('industry', industry)//this just displays the industry
     })
-
-  }
+}

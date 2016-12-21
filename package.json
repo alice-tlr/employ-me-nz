@@ -1,9 +1,10 @@
 {
-  "name": "the_watch",
+  "name": "employ-me-nz",
   "version": "0.1.0",
-  "description": "Practise joins",
+  "description": "Help finding accredited employers in New Zealand",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
     "knex": "knex",
     "dev": "nodemon index",
     "debug": "devtool index --watch",
@@ -12,17 +13,20 @@
 
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alice-tlr/the-watch"
+    "url": "git+https://github.com/alice-tlr/employ-me-nz"
   },
   "keywords": [
-    "knex",
-    "joins"
+    "accredited",
+    "employers",
+    "New Zealand",
+    "express",
+    "knex"
   ],
   "author": "Alice Rosier",
   "bugs": {
-    "url": "https://github.com/alice-tlr/the-watch"
+    "url": "https://github.com/alice-tlr/employ-me-nz"
   },
-  "homepage": "https://github.com/alice-tlr/the-watch",
+  "homepage": "https://github.com/alice-tlr/employ-me-nz",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
