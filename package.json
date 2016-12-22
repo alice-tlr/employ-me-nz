@@ -8,9 +8,9 @@
     "knex": "knex",
     "dev": "nodemon index",
     "debug": "devtool index --watch",
+    "postinstall": "knex migrate:latest",
     "test": "tape 'tests/**/*.test.js' | tap-spec"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alice-tlr/employ-me-nz"
@@ -32,6 +32,7 @@
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "knex": "^0.11.10",
+    "postgresql": "0.0.1",
     "sqlite3": "^3.1.8"
   },
   "devDependencies": {
